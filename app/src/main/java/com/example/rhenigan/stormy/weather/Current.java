@@ -1,4 +1,6 @@
-package com.example.rhenigan.stormy;
+package com.example.rhenigan.stormy.weather;
+
+import com.example.rhenigan.stormy.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -9,7 +11,7 @@ import java.util.TimeZone;
  * ------------------------------
  */
 
-public class CurrentWeather {
+public class Current {
     private String mIcon;
     private Long mTime;
     private double mTemp;
