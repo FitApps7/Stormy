@@ -29,7 +29,7 @@ public class Forecast {
         mHourlyForecast = hourlyForecast;
     }
 
-    public Day[] getDaylyForecast() {
+    public Day[] getDailyForecast() {
         return mDaylyForecast;
     }
 

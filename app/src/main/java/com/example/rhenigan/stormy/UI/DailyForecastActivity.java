@@ -1,4 +1,4 @@
-package com.example.rhenigan.stormy;
+package com.example.rhenigan.stormy.UI;
 
 import android.content.Intent;
 import android.os.Parcelable;
@@ -7,33 +7,33 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.example.rhenigan.stormy.UI.MainActivity;
-import com.example.rhenigan.stormy.adapters.HourAdapter;
-import com.example.rhenigan.stormy.weather.Hour;
+import com.example.rhenigan.stormy.R;
+import com.example.rhenigan.stormy.adapters.DayAdapter;
+import com.example.rhenigan.stormy.weather.Day;
 
 import java.util.Arrays;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class HourlyForecastActivity extends AppCompatActivity {
+public class DailyForecastActivity extends AppCompatActivity {
 
-    private Hour[] mHours;
+    private Day[] mDays;
 
     @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_hourly_forecast);
+        setContentView(R.layout.activity_daily_forecast);
 
         ButterKnife.bind(this);
 
         Intent intent = getIntent();
-        Parcelable[] parcelables = intent.getParcelableArrayExtra(MainActivity.HOURLY_FORECAST);
-        mHours = Arrays.copyOf(parcelables, parcelables.length, Hour[].class);
+        Parcelable[] parcelables = intent.getParcelableArrayExtra(MainActivity.DAILY_FORECAST);
+        mDays = Arrays.copyOf(parcelables, parcelables.length, Day[].class);
 
-        HourAdapter adapter = new HourAdapter(mHours);
+        DayAdapter adapter = new DayAdapter(mDays);
         mRecyclerView.setAdapter(adapter);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);

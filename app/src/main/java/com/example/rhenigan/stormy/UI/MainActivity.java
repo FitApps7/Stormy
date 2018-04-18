@@ -14,7 +14,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.rhenigan.stormy.HourlyForecastActivity;
 import com.example.rhenigan.stormy.R;
 import com.example.rhenigan.stormy.weather.Current;
 import com.example.rhenigan.stormy.weather.Day;
@@ -40,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "MAIN ACTIVITY";
     public static final String HOURLY_FORECAST = "HOURLY_FORECAST";
+    public static final String DAILY_FORECAST = "DAILY_FORECAST";
 
     private Forecast mForecast;
 
@@ -256,6 +256,13 @@ public class MainActivity extends AppCompatActivity {
     public void startHourlyActivity(View view) {
         Intent intent = new Intent(this, HourlyForecastActivity.class);
         intent.putExtra(HOURLY_FORECAST, mForecast.getHourlyForecast());
+        startActivity(intent);
+    }
+
+    @OnClick (R.id.DailyButton)
+    public void startDailyActivity(View view) {
+        Intent intent = new Intent(this, DailyForecastActivity.class);
+        intent.putExtra(DAILY_FORECAST, mForecast.getDailyForecast());
         startActivity(intent);
     }
 }
