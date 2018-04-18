@@ -66,7 +66,7 @@ public class Day implements Parcelable {
     }
 
     public String getDay() {
-        SimpleDateFormat formatter = new SimpleDateFormat("E");
+        SimpleDateFormat formatter = new SimpleDateFormat("EEEE");
         Date date = new Date(mTime*1000);
         return formatter.format(date);
     }

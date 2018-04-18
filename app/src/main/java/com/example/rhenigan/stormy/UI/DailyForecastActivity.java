@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.example.rhenigan.stormy.R;
 import com.example.rhenigan.stormy.adapters.DayAdapter;
@@ -33,7 +34,7 @@ public class DailyForecastActivity extends AppCompatActivity {
         Parcelable[] parcelables = intent.getParcelableArrayExtra(MainActivity.DAILY_FORECAST);
         mDays = Arrays.copyOf(parcelables, parcelables.length, Day[].class);
 
-        DayAdapter adapter = new DayAdapter(mDays);
+        DayAdapter adapter = new DayAdapter(this, mDays);
         mRecyclerView.setAdapter(adapter);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);

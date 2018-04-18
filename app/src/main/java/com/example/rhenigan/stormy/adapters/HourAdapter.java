@@ -1,11 +1,13 @@
 package com.example.rhenigan.stormy.adapters;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.rhenigan.stormy.R;
 import com.example.rhenigan.stormy.weather.Hour;
@@ -17,12 +19,14 @@ import com.example.rhenigan.stormy.weather.Hour;
 public class HourAdapter extends RecyclerView.Adapter<HourAdapter.HourViewHolder> {
 
     private Hour[] mHours;
+    private Context mContext;
 
-    public HourAdapter(Hour[] hours) {
+    public HourAdapter(Context context, Hour[] hours) {
         mHours = hours;
+        mContext = context;
     }
 
-    public class HourViewHolder extends RecyclerView.ViewHolder {
+    public class HourViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView mTimeLabel;
         public TextView mSummaryLabel;
@@ -36,6 +40,8 @@ public class HourAdapter extends RecyclerView.Adapter<HourAdapter.HourViewHolder
             mSummaryLabel = itemView.findViewById(R.id.summaryLabel);
             mTempLabel = itemView.findViewById(R.id.tempLabel);
             mIconImageView = itemView.findViewById(R.id.iconImageView);
+
+            itemView.setOnClickListener(this);
         }
 
         public void bindHour(Hour hour) {
@@ -43,6 +49,15 @@ public class HourAdapter extends RecyclerView.Adapter<HourAdapter.HourViewHolder
             mSummaryLabel.setText(hour.getSummary());
             mTempLabel.setText(hour.getTemp() + "");
             mIconImageView.setImageResource(hour.getIconId());
+        }
+
+        @Override
+        public void onClick(View view) {
+            String Time = (String) mTimeLabel.getText();
+            String Temp = (String) mTempLabel.getText();
+            String Summary = (String) mSummaryLabel.getText();
+            String message = String.format("At %s it will be %s and %s", Time, Temp, Summary);
+            Toast.makeText(mContext, message, Toast.LENGTH_LONG).show();
         }
     }
 
